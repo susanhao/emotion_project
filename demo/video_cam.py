@@ -1,10 +1,8 @@
 
 import cv2
-from model import FacialExpressionModel
 import numpy as np
 
 facec = cv2.CascadeClassifier('haarcascade_frontalface_default.xml')
-model = FacialExpressionModel("model.json", "model_weights.h5")
 font = cv2.FONT_HERSHEY_SIMPLEX
 
 class VideoCamera(object):
