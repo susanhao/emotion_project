@@ -29,9 +29,10 @@ def save_model(model, model_name, working_dir):
     #save weights
     model.save_weights(working_dir +'models/' + '%s_weights.h5'%model_name)
 
-class Model_JSON():
+class Face_Model():
 
 
+  EMOTIONS_LIST = ["Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise"]
   def __init__(self, model_info_path, model_name, weight_name):
     self.model = self.load_model(model_info_path + model_name)
     self.model = self.load_weights(self.model, model_info_path + weight_name)
@@ -54,3 +55,10 @@ class Model_JSON():
       model.load_weights(path)
       return model
 
+  def predict_emotion_class(self, model, path, h5 = True):
+    #loads weights
+    if h5 == False:
+      print ('havent gotten that far yet')
+    else:
+      self.preds = self.model.predict(img)
+      return Face_Model.EMOTIONS_LIST[np.argmax(self.preds)]
