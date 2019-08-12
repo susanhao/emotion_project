@@ -1,5 +1,5 @@
 from keras.models import Sequential, Model, model_from_json
-keras.callbacks import ModelCheckpoint,TensorBoard
+from keras.callbacks import ModelCheckpoint,TensorBoard
 
 #runs the model specified
 #train data follos format [x, y].  Same with val_data
@@ -29,7 +29,9 @@ def save_model(model, model_name, working_dir):
     #save weights
     model.save_weights(working_dir +'models/' + '%s_weights.h5'%model_name)
 
-class Model_Json:
+class Model_JSON():
+
+
   def __init__(self, model_info_path, model_name, weight_name):
     self.model = self.load_model(model_info_path + model_name)
     self.model = self.load_weights(self.model, model_info_path + weight_name)
@@ -51,3 +53,4 @@ class Model_Json:
     else:
       model.load_weights(path)
       return model
+
