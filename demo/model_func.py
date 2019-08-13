@@ -55,10 +55,7 @@ class Face_Model():
       model.load_weights(path)
       return model
 
-  def predict_emotion_class(self, model, path, h5 = True):
+  def predict_emotion_class(self, img):
     #loads weights
-    if h5 == False:
-      print ('havent gotten that far yet')
-    else:
-      self.preds = self.model.predict(img)
-      return Face_Model.EMOTIONS_LIST[np.argmax(self.preds)]
+    self.preds = self.model.predict(img)
+    return Face_Model.EMOTIONS_LIST[np.argmax(self.preds)]
