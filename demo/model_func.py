@@ -32,10 +32,34 @@ def save_model(model, model_name, working_dir):
 class Face_Model():
 
 
-  EMOTIONS_LIST = {0:"Angry", 1:"Disgust", 2:"Fear", 3:"Happy", 4:"Neutral", 5:"Sad", 6:"Surprise"}
   def __init__(self, model_info_path, model_name, weight_name):
     self.model = self.load_model(model_info_path + model_name)
     self.model = self.load_weights(self.model, model_info_path + weight_name)
+    EMOTIONS_LIST = {0:"Angry", 1:"Disgust", 2:"Fear", 3:"Happy", 4:"Neutral", 5:"Sad", 6:"Surprise"}
+    PICS_LIST = None
+
+  def load_emote_pics(self)
+  """ This method of the Face_Model class loads emotion pictures from memory
+      into a dict whose indices match the EMOTION_LIST indices. This dict is
+      saved as an attribute of the class instance which calls it
+  """
+   
+   self.PICS_LIST = dict()
+   
+   self.PICT_LIST[0] = cv2.imread('../pics/angry.jpeg')
+    
+   self.PICT_LIST[1] = cv2.imread('../pics/disgusted.jpeg')
+    
+   self.PICT_LIST[2] = cv2.imread('../pics/fear.jpeg')
+    
+   self.PICT_LIST[3] = cv2.imread('../pics/happy.jpeg')
+    
+   self.PICT_LIST[4] = cv2.imread('../pics/neutral.jpeg')
+    
+   self.PICT_LIST[5] = cv2.imread('../pics/sad.jpeg')
+    
+   self.PICT_LIST[6] = cv2.imread('../pics/surprise.jpeg')
+    
     
   def load_model(self, path, json=True):
     #load model
