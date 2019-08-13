@@ -32,7 +32,7 @@ def save_model(model, model_name, working_dir):
 class Face_Model():
 
 
-  EMOTIONS_LIST = ["Angry", "Disgust", "Fear", "Happy", "Neutral", "Sad", "Surprise"]
+  EMOTIONS_LIST = {0:"Angry", 1:"Disgust", 2:"Fear", 3:"Happy", 4:"Neutral", 5:"Sad", 6:"Surprise"}
   def __init__(self, model_info_path, model_name, weight_name):
     self.model = self.load_model(model_info_path + model_name)
     self.model = self.load_weights(self.model, model_info_path + weight_name)
