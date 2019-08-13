@@ -1,5 +1,6 @@
 from keras.models import Sequential, Model, model_from_json
 from keras.callbacks import ModelCheckpoint,TensorBoard
+import numpy as np
 
 #runs the model specified
 #train data follos format [x, y].  Same with val_data
@@ -29,36 +30,41 @@ def save_model(model, model_name, working_dir):
     #save weights
     model.save_weights(working_dir +'models/' + '%s_weights.h5'%model_name)
 
-class Face_Model():
+class Face_Model(object):
 
+  EMOTIONS_LIST = ["Angry", "Disgust",
+                     "Fear", "Happy",
+                     "Neutral", "Sad",
+                     "Surprise"]
 
   def __init__(self, model_info_path, model_name, weight_name):
     self.model = self.load_model(model_info_path + model_name)
     self.model = self.load_weights(self.model, model_info_path + weight_name)
-    EMOTIONS_LIST = {0:"Angry", 1:"Disgust", 2:"Fear", 3:"Happy", 4:"Neutral", 5:"Sad", 6:"Surprise"}
+
+
     PICS_LIST = None
 
-  def load_emote_pics(self)
-  """ This method of the Face_Model class loads emotion pictures from memory
-      into a dict whose indices match the EMOTION_LIST indices. This dict is
-      saved as an attribute of the class instance which calls it
-  """
+  # def load_emote_pics(self):
+  # """ This method of the Face_Model class loads emotion pictures from memory
+  #     into a dict whose indices match the EMOTION_LIST indices. This dict is
+  #     saved as an attribute of the class instance which calls it
+  # """
    
-   self.PICS_LIST = dict()
+  #  self.PICS_LIST = dict()
    
-   self.PICT_LIST["Angry"] = cv2.imread('../pics/angry.jpeg')
+  #  self.PICT_LIST["Angry"] = cv2.imread('../pics/angry.jpeg')
     
-   self.PICT_LIST["Disgust"] = cv2.imread('../pics/disgusted.jpeg')
+  #  self.PICT_LIST["Disgust"] = cv2.imread('../pics/disgusted.jpeg')
     
-   self.PICT_LIST["Fear", ] = cv2.imread('../pics/fear.jpeg')
+  #  self.PICT_LIST["Fear", ] = cv2.imread('../pics/fear.jpeg')
    
-   self.PICT_LIST["Happy"] = cv2.imread('../pics/happy.jpeg')
+  #  self.PICT_LIST["Happy"] = cv2.imread('../pics/happy.jpeg')
     
-   self.PICT_LIST["Neutral"] = cv2.imread('../pics/neutral.jpeg')
+  #  self.PICT_LIST["Neutral"] = cv2.imread('../pics/neutral.jpeg')
     
-   self.PICT_LIST["Sad"] = cv2.imread('../pics/sad.jpeg')
+  #  self.PICT_LIST["Sad"] = cv2.imread('../pics/sad.jpeg')
     
-   self.PICT_LIST["Surprise"] = cv2.imread('../pics/surprise.jpeg')
+  #  self.PICT_LIST["Surprise"] = cv2.imread('../pics/surprise.jpeg')
     
     
   def load_model(self, path, json=True):
