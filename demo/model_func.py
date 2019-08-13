@@ -46,19 +46,19 @@ class Face_Model():
    
    self.PICS_LIST = dict()
    
-   self.PICT_LIST[0] = cv2.imread('../pics/angry.jpeg')
+   self.PICT_LIST["Angry"] = cv2.imread('../pics/angry.jpeg')
     
-   self.PICT_LIST[1] = cv2.imread('../pics/disgusted.jpeg')
+   self.PICT_LIST["Disgust"] = cv2.imread('../pics/disgusted.jpeg')
     
-   self.PICT_LIST[2] = cv2.imread('../pics/fear.jpeg')
+   self.PICT_LIST["Fear", ] = cv2.imread('../pics/fear.jpeg')
+   
+   self.PICT_LIST["Happy"] = cv2.imread('../pics/happy.jpeg')
     
-   self.PICT_LIST[3] = cv2.imread('../pics/happy.jpeg')
+   self.PICT_LIST["Neutral"] = cv2.imread('../pics/neutral.jpeg')
     
-   self.PICT_LIST[4] = cv2.imread('../pics/neutral.jpeg')
+   self.PICT_LIST["Sad"] = cv2.imread('../pics/sad.jpeg')
     
-   self.PICT_LIST[5] = cv2.imread('../pics/sad.jpeg')
-    
-   self.PICT_LIST[6] = cv2.imread('../pics/surprise.jpeg')
+   self.PICT_LIST["Surprise"] = cv2.imread('../pics/surprise.jpeg')
     
     
   def load_model(self, path, json=True):
