@@ -3,6 +3,7 @@ import pickle as pkl
 import tensorflow as tf
 from keras.models import Sequential, Model, model_from_json
 from keras.callbacks import ModelCheckpoint,TensorBoard
+import cv2
 
 
 #runs the model specified
@@ -40,11 +41,14 @@ class Face_Model(object):
     "Neutral", "Sad",
     "Surprise"]
 
+    EMOTE_DICT = {'Angry': cv2.imread('../pics/angry.jpeg'), 'Disgust': cv2.imread('../pics/disgusted.jpeg'),
+                'Fear': cv2.imread('../pics/fear.jpeg'), 'Happy': cv2.imread('../pics/happy.jpeg'),
+                'Neutral': cv2.imread('../pics/neutral.jpeg'), 'Sad': cv2.imread('../pics/sad.jpeg'),
+                'Surprise': cv2.imread('../pics/surprise.jpeg')}
+
     def __init__(self, model_info_path, model_name, weight_name):
         self.model, self.graph = self.load_model(model_info_path + model_name)
         self.model = self.load_weights(self.model, model_info_path + weight_name)
-        PICS_LIST = None
-        self.load_emote_pics()
 
     def load_model(self, path, json=True):
             #load model
@@ -67,27 +71,9 @@ class Face_Model(object):
     def predict_emotion_class(self, img):
         with self.graph.as_default():
             self.preds = self.model.predict(img)
-        return Face_Model.EMOTIONS_LIST[np.argmax(self.preds)]
+            self.emotion = Face_Model.EMOTIONS_LIST[np.argmax(self.preds)]
+        return self.emotion
 
 
     def load_emote_pics(self):
-        """ This method of the Face_Model class loads emotion pictures from 
-            memory into a dict whose indices match the EMOTION_LIST indices. 
-            This dict is saved as an attribute of the calling class 
-        """
-
-        self.PICS_LIST = dict()
-
-        self.PICS_LIST["Angry"] = cv2.imread('../pics/angry.jpeg')
-
-        self.PICS_LIST["Disgust"] = cv2.imread('../pics/disgusted.jpeg')
-
-        self.PICS_LIST["Fear", ] = cv2.imread('../pics/fear.jpeg')
-
-        self.PICS_LIST["Happy"] = cv2.imread('../pics/happy.jpeg')
-
-        self.PICS_LIST["Neutral"] = cv2.imread('../pics/neutral.jpeg')
-
-        self.PICS_LIST["Sad"] = cv2.imread('../pics/sad.jpeg')
-
-        self.PICS_LIST["Surprise"] = cv2.imread('../pics/surprise.jpeg')
+        return Face_Model.EMOTE_DICT[self.emotion]

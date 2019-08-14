@@ -25,8 +25,10 @@ class VideoCamera(object):
                 roi = cv2.resize(fc, (224, 224))
                 pred = model.predict_emotion_class(roi.reshape(1, 224, 224, 3))
 
-                emote = cv2.resize(self.PICS_LIST[EMOTIONS_LIST[pred]], (w, h))
-                fr[ x : x + w , y : y + h ] = emote
+                emote = cv2.resize(model.load_emote_pics(), (w, h))
+                added_emote = cv2.addWeighted(fr[y: y+h, x:x+w], 0.5, emote, 0.4, 0)
+                fr[y: y+h, x: x+w] = added_emote
+                # fr[ x : x + w , y : y + h ] = emote
 
             _, jpeg = cv2.imencode('.jpg', fr)
             return jpeg.tobytes()
