@@ -44,7 +44,7 @@ class Face_Model(object):
         self.model, self.graph = self.load_model(model_info_path + model_name)
         self.model = self.load_weights(self.model, model_info_path + weight_name)
         PICS_LIST = None
-        self.load_emote_pics(self)
+        self.load_emote_pics()
 
     def load_model(self, path, json=True):
             #load model
@@ -78,16 +78,16 @@ class Face_Model(object):
 
         self.PICS_LIST = dict()
 
-        self.PICT_LIST["Angry"] = cv2.imread('../pics/angry.jpeg')
+        self.PICS_LIST["Angry"] = cv2.imread('../pics/angry.jpeg')
 
-        self.PICT_LIST["Disgust"] = cv2.imread('../pics/disgusted.jpeg')
+        self.PICS_LIST["Disgust"] = cv2.imread('../pics/disgusted.jpeg')
 
-        self.PICT_LIST["Fear", ] = cv2.imread('../pics/fear.jpeg')
+        self.PICS_LIST["Fear", ] = cv2.imread('../pics/fear.jpeg')
 
-        self.PICT_LIST["Happy"] = cv2.imread('../pics/happy.jpeg')
+        self.PICS_LIST["Happy"] = cv2.imread('../pics/happy.jpeg')
 
-        self.PICT_LIST["Neutral"] = cv2.imread('../pics/neutral.jpeg')
+        self.PICS_LIST["Neutral"] = cv2.imread('../pics/neutral.jpeg')
 
-        self.PICT_LIST["Sad"] = cv2.imread('../pics/sad.jpeg')
+        self.PICS_LIST["Sad"] = cv2.imread('../pics/sad.jpeg')
 
-        self.PICT_LIST["Surprise"] = cv2.imread('../pics/surprise.jpeg')
+        self.PICS_LIST["Surprise"] = cv2.imread('../pics/surprise.jpeg')
