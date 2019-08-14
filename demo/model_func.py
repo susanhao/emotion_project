@@ -71,10 +71,10 @@ class Face_Model(object):
 
 
     def load_emote_pics(self):
-    """ This method of the Face_Model class loads emotion pictures from memory
-        into a dict whose indices match the EMOTION_LIST indices. This dict is
-        saved as an attribute of the class instance which calls it
-    """
+        """ This method of the Face_Model class loads emotion pictures from 
+            memory into a dict whose indices match the EMOTION_LIST indices. 
+            This dict is saved as an attribute of the calling class 
+        """
 
         self.PICS_LIST = dict()
 
