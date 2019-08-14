@@ -35,7 +35,7 @@ def save_model(model, model_name, working_dir):
 
 class Face_Model(object):
 
-    EMOTIONS_LIST = {"Angry":0, "Disgust",
+    EMOTIONS_LIST = ["Angry", "Disgust",
     "Fear", "Happy",
     "Neutral", "Sad",
     "Surprise"]
