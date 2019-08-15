@@ -78,12 +78,5 @@ class Face_Model(object):
             self.emotion = Face_Model.EMOTIONS_LIST[np.argmax(self.preds)]
         return self.emotion
 
-    # def predict_emotion_confidence(self, img):
-    #     with self.graph.as_default():
-    #         self.preds = self.model.predict(img)
-            
-    #     return self.emotion
-
-
     def load_emote_pics(self):
         return Face_Model.EMOTE_DICT[self.emotion]
