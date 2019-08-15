@@ -11,11 +11,16 @@ from model_func import *
 from video_cam import *
 from flask import Flask, render_template, Response
 
+#turn off debugging warnings
+import os
+os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
+
 #i couldn't upload the models to github.  So please change this to where the model is
 model_dir = '../face_models/'
 face_model = Face_Model(model_dir, 'vggFace_finetune_val_loss_FER.json', 'vggFace_finetune_val_loss_1.105_63.1_FER.h5')
 
 app = Flask(__name__)
+
 
 @app.route('/')
 def index():
@@ -31,6 +36,9 @@ def gen(camera):
 def video_feed():
     return Response(gen(VideoCamera()),
                     mimetype='multipart/x-mixed-replace; boundary=frame')
+
+# def graph_feed():
+# 	graph_data = 
 
 if __name__ == '__main__':
 	app.run(host='localhost',port = 2000, debug=True)
