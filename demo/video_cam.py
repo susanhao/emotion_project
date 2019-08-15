@@ -56,9 +56,6 @@ class VideoCamera(object):
         # self.video = cv2.VideoCapture(0)
         #threading
         self.video = VideoCaptureAsync()
-    def __del__(self):
-        self.video.release()
-
     # returns camera frames along with bounding boxes and predictions
     def get_frame(self, model):
         #threading
@@ -87,7 +84,7 @@ class VideoCamera(object):
                 fig.savefig('plot.png', dpi = 100)
                 plt.close()
                 plt_img = cv2.imread('plot.png')
-                fr[index*200:index*200 + 150, 760:760+ 200] = plt_img
+                fr[index*200:index*200 + 150, 740:740+ 200] = plt_img
 
             #output emoji overlay 
             emote = cv2.resize(model.load_emote_pics(), (w, h))
