@@ -5,9 +5,6 @@ from keras.models import Sequential, Model, model_from_json
 from keras.callbacks import ModelCheckpoint,TensorBoard
 import cv2
 
-#turn off debugging warnings
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 
 
 #runs the model specified

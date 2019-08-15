@@ -11,9 +11,6 @@ from model_func import *
 from video_cam import *
 from flask import Flask, render_template, Response
 
-#turn off debugging warnings
-import os
-os.environ['TF_CPP_MIN_LOG_LEVEL'] = '3' 
 
 #i couldn't upload the models to github.  So please change this to where the model is
 model_dir = '../face_models/'
@@ -24,18 +21,19 @@ app = Flask(__name__)
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+	return render_template('index.html')
 
 def gen(camera):
-    while True:
-        frame = camera.get_frame(face_model)
-        yield (b'--frame\r\n'
-               b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
+	counter = 0
+	while True:
+		frame = camera.get_frame(face_model)
+		yield (b'--frame\r\n'
+			   b'Content-Type: image/jpeg\r\n\r\n' + frame + b'\r\n\r\n')
 
 @app.route('/video_feed')
 def video_feed():
-    return Response(gen(VideoCamera()),
-                    mimetype='multipart/x-mixed-replace; boundary=frame')
+	return Response(gen(VideoCamera()),
+					mimetype='multipart/x-mixed-replace; boundary=frame')
 
 # def graph_feed():
 # 	graph_data = 
