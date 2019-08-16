@@ -53,15 +53,8 @@ class VideoCaptureAsync:
 
 class VideoCamera(object):
     def __init__(self):
-        # self.video = cv2.VideoCapture(0)
         #threading
         self.video = VideoCaptureAsync()
-
-    # returns camera frames along with bounding boxes and predictions
-    def get_frame(self, model):
-        #threading
-        self.video.start()
-        ret, fr = self.video.read()
         
     def process_image(self, fr, model):
         faces = facec.detectMultiScale(fr, 1.3, 5)

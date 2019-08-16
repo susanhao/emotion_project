@@ -34,8 +34,6 @@ def video_feed():
 	return Response(gen(VideoCamera()),
 					mimetype='multipart/x-mixed-replace; boundary=frame')
 
-# def graph_feed():
-# 	graph_data = 
 
 if __name__ == '__main__':
 	app.run(host='localhost',port = 2000, debug=True)
