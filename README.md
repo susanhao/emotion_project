@@ -1,6 +1,8 @@
-#Real Time Emotion Detection#
+# Real Time Face Emotion Detection #
 
 This is a demo for the Berkeley GDSO 2019 DataScience Workshop.  Team members include Susan Hao, Zhimin Chen, Daniel Wooten, and Kilean Hwang.  We were mentored by Frank Cleary.
+
+This demo uses open cv to read in your webcam stream, and runs each frame through a emotion recognition model.  The demo then takes an emoji associated with the predicted emotion of your face and overlays it on top of your face.  It additionally outputs a probability bar graph with the probability of each emotion outputted from the model.
 
 **Requirements**
 - Please make sure you install all the requirments for python as described in the requirements.txt file.  
