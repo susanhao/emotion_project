@@ -14,7 +14,7 @@ from flask import Flask, render_template, Response
 
 #i couldn't upload the models to github.  So please change this to where the model is
 model_dir = '../face_models/'
-face_model = Face_Model(model_dir, 'vggFace_finetune_val_loss_FER.json', 'vggFace_finetune_val_loss_1.105_63.1_FER.h5')
+face_model = Face_Model(model_dir, 'newData_vggFace_finetune_val_loss_0.98_64.4.json', 'newData_vggFace_finetune_val_loss_0.98_64.4.h5')
 
 app = Flask(__name__)
 
