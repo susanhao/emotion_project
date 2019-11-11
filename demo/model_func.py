@@ -59,7 +59,7 @@ class Face_Model(object):
                 print (path)
                 with open (path, 'r') as f:
                     model = model_from_json(f.read())
-                    graph = tf.get_default_graph()
+                    graph = tf.compat.v1.get_default_graph()
             return model, graph
 
     def load_weights(self, model, path, h5 = True):
